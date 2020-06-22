@@ -1,0 +1,2 @@
+create schema SHOPPINGCART;
+use SHOPPINGCART;
