@@ -47,7 +47,7 @@ create table ORDER_DETAILS
   ID         VARCHAR(50) not null,
   AMOUNT     double precision not null,
   PRICE      double precision not null,
-  QUANITY    INTEGER not null,
+  QUANTITY   INTEGER not null,
   ORDER_ID   VARCHAR(50) not null,
   PRODUCT_ID VARCHAR(20) not null
 ) ;
@@ -62,26 +62,26 @@ alter table ORDER_DETAILS
   references PRODUCTS (CODE);
  
 ---------------------------------------  
-insert into Accounts (USER_NAME, ACTIVE, PASSWORD, USER_ROLE)
+insert into ACCOUNTS (USER_NAME, ACTIVE, PASSWORD, USER_ROLE)
 values ('employee1', 1,
 'pwd_emp', 'ROLE_EMPLOYEE');
  
-insert into Accounts (USER_NAME, ACTIVE, PASSWORD, USER_ROLE)
+insert into ACCOUNTS (USER_NAME, ACTIVE, PASSWORD, USER_ROLE)
 values ('manager1', 1,
 'pwd_mng', 'ROLE_MANAGER');
  
 ----------------
-insert into products (CODE, NAME, PRICE, CREATE_DATE)
-values ('P01', 'Apple', 5, sysdate);
+insert into PRODUCTS (CODE, NAME, PRICE, CREATE_DATE)
+values ('P01', 'Apple', 5, CURDATE());
  
-insert into products (CODE, NAME, PRICE, CREATE_DATE)
-values ('P02', 'Banana', 3, sysdate);
+insert into PRODUCTS (CODE, NAME, PRICE, CREATE_DATE)
+values ('P02', 'Banana', 3, CURDATE());
  
-insert into products (CODE, NAME, PRICE, CREATE_DATE)
-values ('P03', 'Durian', 50, sysdate);
+insert into PRODUCTS (CODE, NAME, PRICE, CREATE_DATE)
+values ('P03', 'Durian', 50, CURDATE());
  
-insert into products (CODE, NAME, PRICE, CREATE_DATE)
-values ('P04', 'Mango', 20, sysdate);
+insert into PRODUCTS (CODE, NAME, PRICE, CREATE_DATE)
+values ('P04', 'Mango', 20, CURDATE());
  
-insert into products (CODE, NAME, PRICE, CREATE_DATE)
-values ('P05', 'Cherry', 30, sysdate);
+insert into PRODUCTS (CODE, NAME, PRICE, CREATE_DATE)
+values ('P05', 'Cherry', 30, CURDATE());
