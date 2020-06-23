@@ -49,7 +49,7 @@ public class OrderDAO {
 		
 		CustomerInfo customerInfo = cartInfo.getCustomerInfo();
         order.setName(customerInfo.getName());
-        order.setAddr(customerInfo.getAddress());
+        order.setAddr(customerInfo.getAddr());
         order.setEmail(customerInfo.getEmail());
         order.setPhone(customerInfo.getPhone());
         

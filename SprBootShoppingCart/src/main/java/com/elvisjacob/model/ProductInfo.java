@@ -1,5 +1,7 @@
 package com.elvisjacob.model;
 
+import com.elvisjacob.entities.Product;
+
 public class ProductInfo {
 
 	private String code;
@@ -7,11 +9,15 @@ public class ProductInfo {
 	private double price;
 	
 	public ProductInfo() {
-		super();
 	}
 
+	public ProductInfo(Product product) {
+		this.code = product.getCode();
+		this.name = product.getName();
+		this.price = product.getPrice();
+	}
+	
 	public ProductInfo(String code, String name, double price) {
-		super();
 		this.code = code;
 		this.name = name;
 		this.price = price;
@@ -39,11 +45,6 @@ public class ProductInfo {
 
 	public void setPrice(double price) {
 		this.price = price;
-	}
-
-	@Override
-	public String toString() {
-		return "ProductInfo [code=" + code + ", name=" + name + ", price=" + price + "]";
 	}
 	
 }

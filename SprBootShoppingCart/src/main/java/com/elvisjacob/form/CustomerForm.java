@@ -1,8 +1,8 @@
-package com.elvisjacob.model;
+package com.elvisjacob.form;
 
-import com.elvisjacob.form.CustomerForm;
+import com.elvisjacob.model.CustomerInfo;
 
-public class CustomerInfo {
+public class CustomerForm {
 
 	private String name;
 	private String addr;
@@ -11,15 +11,16 @@ public class CustomerInfo {
 	
 	private boolean valid;
 
-	public CustomerInfo() {
+	public CustomerForm() {
 	}
 
-	public CustomerInfo(CustomerForm form) {
-		this.name = form.getName();
-		this.addr = form.getAddr();
-		this.email = form.getEmail();
-		this.phone = form.getPhone();
-		this.valid = form.isValid();
+	public CustomerForm(CustomerInfo customerInfo) {
+		if (customerInfo != null) {
+			this.name = customerInfo.getName();
+			this.addr = customerInfo.getAddr();
+			this.email = customerInfo.getEmail();
+			this.phone = customerInfo.getPhone();
+		}
 	}
 
 	public String getName() {
@@ -61,5 +62,5 @@ public class CustomerInfo {
 	public void setValid(boolean valid) {
 		this.valid = valid;
 	}
-
+	
 }

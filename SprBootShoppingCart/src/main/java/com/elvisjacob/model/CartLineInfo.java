@@ -2,23 +2,32 @@ package com.elvisjacob.model;
 
 public class CartLineInfo {
 
-	ProductInfo productInfo;
+	private ProductInfo productInfo;
+	private int quantity;
 	
-	public double getAmount() {
-		// TODO Auto-generated method stub
-		return 0;
+	public CartLineInfo(ProductInfo productInfo) {
+		this.quantity = 0;
 	}
 
 	public ProductInfo getProductInfo() {
-		// TODO Auto-generated method stub
-		return this.productInfo;
+		return productInfo;
+	}
+
+	public void setProductInfo(ProductInfo productInfo) {
+		this.productInfo = productInfo;
 	}
 
 	public int getQuantity() {
-		// TODO Auto-generated method stub
-		return 0;
+		return quantity;
 	}
 
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public double getAmount() {
+		return this.productInfo.getPrice() * this.quantity;
+	}
 
 	
 }
