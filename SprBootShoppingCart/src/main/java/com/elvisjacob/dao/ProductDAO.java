@@ -1,10 +1,10 @@
 package com.elvisjacob.dao;
 
+import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,14 +15,15 @@ import com.elvisjacob.model.ProductInfo;
 @Repository
 public class ProductDAO {
 
-	private SessionFactory sessionFactory;
+	
+	@Autowired
+	private EntityManager entityManager;
 	
 	public Product findProduct(String code) {
 		try {
 			String sqlCmd = "Select e from " + Product.class.getName() + "e where e.code=:code ";
-		
-			Session session = this.sessionFactory.getCurrentSession();
-			Query<Product> query = session.createQuery(sqlCmd, Product.class);
+
+			TypedQuery<Product> query = entityManager.createQuery(sqlCmd, Product.class);
 			query.setParameter("code", code);
 			return (Product) query.getSingleResult();
 		} catch (NoResultException e) {
@@ -38,7 +39,7 @@ public class ProductDAO {
 		return new ProductInfo(product.getCode(), product.getName(), product.getPrice());
 	}
 	
-	// TODO: Upload a new product
+	// TODO: Upload new product
 	// public void save(ProductForm productForm)
 	
 	

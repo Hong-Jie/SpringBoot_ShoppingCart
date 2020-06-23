@@ -4,9 +4,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,15 +23,14 @@ import com.elvisjacob.model.CustomerInfo;
 public class OrderDAO {
 
 	@Autowired
-	private SessionFactory sessionFactory;
+	private EntityManager entityManager;
 	
 	@Autowired
 	private ProductDAO productDao;
 	
 	private int getMaxOrderNum() {
 		String sqlCmd = "Select max(o.orderNum) from " + Order.class.getName() +  " o ";
-		Session session = this.sessionFactory.getCurrentSession();
-		Query<Integer> query = session.createQuery(sqlCmd, Integer.class);
+		TypedQuery<Integer> query = entityManager.createQuery(sqlCmd, Integer.class);
 		Integer value = (Integer) query.getSingleResult();
 		if (value == null) {
 			return 0;
@@ -40,8 +39,6 @@ public class OrderDAO {
 	}
 	
 	public void saveOrder(CartInfo cartInfo) {
-		Session session = this.sessionFactory.getCurrentSession();
-		
 		int orderNum = this.getMaxOrderNum()+1;
 		Order order = new Order();
 		
@@ -56,7 +53,7 @@ public class OrderDAO {
         order.setEmail(customerInfo.getEmail());
         order.setPhone(customerInfo.getPhone());
         
-        session.persist(order);
+        entityManager.persist(order);
         
         List<CartLineInfo> lines = cartInfo.getCartLines();
         for (CartLineInfo line: lines) {
@@ -71,11 +68,11 @@ public class OrderDAO {
         	Product product = this.productDao.findProduct(code);
         	detail.setProduct(product);
         	
-        	session.persist(detail);
+        	entityManager.persist(detail);
         }
         
         cartInfo.setOrderNum(orderNum);
-        session.flush(); 
+        entityManager.flush(); 
 	}
 	
 }
