@@ -26,9 +26,8 @@ import com.elvisjacob.form.CustomerForm;
 import com.elvisjacob.model.CartInfo;
 import com.elvisjacob.model.CustomerInfo;
 import com.elvisjacob.model.ProductInfo;
+import com.elvisjacob.utils.Utils;
 import com.elvisjacob.validator.CustomerFormValidator;
-
-import antlr.Utils;
 
 @Controller
 @Transactional
