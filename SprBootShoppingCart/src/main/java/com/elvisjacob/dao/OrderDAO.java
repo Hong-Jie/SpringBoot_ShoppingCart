@@ -7,6 +7,7 @@ import java.util.UUID;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +18,9 @@ import com.elvisjacob.entities.Product;
 import com.elvisjacob.model.CartInfo;
 import com.elvisjacob.model.CartLineInfo;
 import com.elvisjacob.model.CustomerInfo;
+import com.elvisjacob.model.OrderDetailInfo;
+import com.elvisjacob.model.OrderInfo;
+import com.elvisjacob.pagination.PaginationResult;
 
 @Transactional
 @Repository
@@ -75,4 +79,39 @@ public class OrderDAO {
         entityManager.flush(); 
 	}
 	
+	public PaginationResult<OrderInfo> listOrderInfo(int page, int maxResult, int maxNavigationPage) {
+		
+		String sqlCmd = "Select new " + OrderInfo.class.getName()
+				+ "(ord.ID, ord.ORDER_DATE, ord.ORDER_NUM, ord.AMOUNT, ord,CUSTOMER_NAME, ord.CUSTOMER_ADDR, "
+				+ "ord.CUSTOMER_EMAIL, ord.CUSTOMER_PHONE) from " + Order.class.getName() + "ord "
+				+ "order by ord.ORDER_NUM desc";
+		
+		Query<OrderInfo> query = (Query<OrderInfo>) entityManager.createQuery(sqlCmd, OrderInfo.class);
+		return new PaginationResult<OrderInfo>(query, page, maxResult, maxNavigationPage);
+	}
+	
+	public Order findOrder(String id) {
+		return entityManager.find(Order.class, id);
+	}
+	
+	public OrderInfo getOrderInfo(String id) {
+		Order order = this.findOrder(id);
+		if (order == null) {
+			return null;
+		}
+		return new OrderInfo(order);
+	}
+	
+	public List<OrderDetailInfo> listOrderDetailInfos(String id){
+		
+		String sqlCmd = "Select new " + OrderDetailInfo.class.getName()
+				+ "(d.id, d.product.code, d.product.name , d.quanity,d.price,d.amount) "
+                + "from " + OrderDetail.class.getName() + " d "
+                + "where d.order.id = :orderId ";
+		
+		Query<OrderDetailInfo> query = (Query<OrderDetailInfo>) entityManager.createNamedQuery(sqlCmd, OrderDetailInfo.class);
+		query.setParameter("orderID", id);
+		
+		return query.getResultList();
+	}
 }

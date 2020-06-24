@@ -26,6 +26,7 @@ import com.elvisjacob.form.CustomerForm;
 import com.elvisjacob.model.CartInfo;
 import com.elvisjacob.model.CustomerInfo;
 import com.elvisjacob.model.ProductInfo;
+import com.elvisjacob.pagination.PaginationResult;
 import com.elvisjacob.utils.Utils;
 import com.elvisjacob.validator.CustomerFormValidator;
 
@@ -80,7 +81,7 @@ public class MainController {
 		PaginationResult<ProductInfo> results = productDao.queryProducts(page, //
 	            maxResult, maxNavigationPage, likeName);
 		
-		model.addAllAttributes("paginationProducts", results);
+		model.addAttribute("paginationProducts", results);
 		return "productList";
 	}
 	

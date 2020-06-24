@@ -3,6 +3,8 @@ package com.elvisjacob.model;
 import java.util.Date;
 import java.util.List;
 
+import com.elvisjacob.entities.Order;
+
 public class OrderInfo {
 	private String id;
     private Date orderDate;
@@ -19,8 +21,19 @@ public class OrderInfo {
 	public OrderInfo() {
 	}
 
+	public OrderInfo(Order order) {
+		this.id = order.getId();
+		this.orderDate = order.getOrderDate();
+		this.orderNum = order.getOrderNum();
+		this.amount = order.getAmount();
+		this.customerName = order.getName();
+		this.customerAddress = order.getAddr();
+		this.customerEmail = order.getEmail();
+		this.customerPhone = order.getPhone();
+	}
+	
 	public OrderInfo(String id, Date orderDate, int orderNum, double amount, String customerName,
-			String customerAddress, String customerEmail, String customerPhone, List<OrderDetailInfo> details) {
+			String customerAddress, String customerEmail, String customerPhone) {
 		this.id = id;
 		this.orderDate = orderDate;
 		this.orderNum = orderNum;
@@ -29,7 +42,6 @@ public class OrderInfo {
 		this.customerAddress = customerAddress;
 		this.customerEmail = customerEmail;
 		this.customerPhone = customerPhone;
-		this.details = details;
 	}
 
 	public String getId() {
