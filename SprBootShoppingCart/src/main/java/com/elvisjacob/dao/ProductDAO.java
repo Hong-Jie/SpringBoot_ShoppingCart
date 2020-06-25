@@ -23,7 +23,7 @@ public class ProductDAO {
 	
 	public Product findProduct(String code) {
 		try {
-			String sqlCmd = "Select e from " + Product.class.getName() + "e where e.code=:code ";
+			String sqlCmd = "Select e from " + Product.class.getName() + " e where e.code=:code ";
 
 			TypedQuery<Product> query = entityManager.createQuery(sqlCmd, Product.class);
 			query.setParameter("code", code);
@@ -47,7 +47,7 @@ public class ProductDAO {
 	
 	public PaginationResult<ProductInfo> queryProducts(int page, int maxResult, int maxNavigationPage, String likeName) {
 		
-		String sqlCmd = "Select new " + ProductInfo.class.getName() + "(p.code, p.name, p.price) from "
+		String sqlCmd = "Select new " + ProductInfo.class.getName() + " (p.code, p.name, p.price) from "
 				+ Product.class.getName() + " p ";
 		
 		if (likeName != null && likeName.length() > 0) {
