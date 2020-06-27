@@ -1,4 +1,3 @@
--- Create table
 create table ACCOUNTS
 (
   USER_NAME VARCHAR(20) not null,
@@ -9,12 +8,11 @@ create table ACCOUNTS
  
 alter table ACCOUNTS
   add primary key (USER_NAME) ;
----------------------------------------
  
 create table PRODUCTS
 (
   CODE        VARCHAR(20) not null,
-  IMAGE       longblob,
+  IMAGE_PATH  VARCHAR(1024) not null,
   NAME        VARCHAR(255) not null,
   PRICE       double precision not null,
   CREATE_DATE datetime not null
@@ -22,8 +20,7 @@ create table PRODUCTS
  
 alter table PRODUCTS
   add primary key (CODE) ;
----------------------------------------
--- Create table
+
 create table ORDERS
 (
   ID               VARCHAR(50) not null,
@@ -39,9 +36,7 @@ alter table ORDERS
   add primary key (ID) ;
 alter table ORDERS
   add constraint ORDER_UK unique (ORDER_NUM) ;
----------------------------------------
- 
--- Create table
+
 create table ORDER_DETAILS
 (
   ID         VARCHAR(50) not null,
@@ -51,7 +46,7 @@ create table ORDER_DETAILS
   ORDER_ID   VARCHAR(50) not null,
   PRODUCT_ID VARCHAR(20) not null
 ) ;
---  
+  
 alter table ORDER_DETAILS
   add primary key (ID) ;
 alter table ORDER_DETAILS
@@ -61,7 +56,7 @@ alter table ORDER_DETAILS
   add constraint ORDER_DETAIL_PROD_FK foreign key (PRODUCT_ID)
   references PRODUCTS (CODE);
  
----------------------------------------  
+
 insert into ACCOUNTS (USER_NAME, ACTIVE, PASSWORD, USER_ROLE)
 values ('employee1', 1,
 'pwd_emp', 'ROLE_EMPLOYEE');
@@ -69,19 +64,20 @@ values ('employee1', 1,
 insert into ACCOUNTS (USER_NAME, ACTIVE, PASSWORD, USER_ROLE)
 values ('manager1', 1,
 'pwd_mng', 'ROLE_MANAGER');
+
+set @img_path = "/images";
+
+insert into PRODUCTS (CODE, IMAGE_PATH, NAME, PRICE, CREATE_DATE)
+values ('P01', CONCAT(@img_path,"/","apple",".png"), 'apple', 5, CURDATE());
  
-----------------
-insert into PRODUCTS (CODE, NAME, PRICE, CREATE_DATE)
-values ('P01', 'Apple', 5, CURDATE());
+insert into PRODUCTS (CODE, IMAGE_PATH, NAME, PRICE, CREATE_DATE)
+values ('P02', CONCAT(@img_path,"/","banana",".png"), 'banana', 3, CURDATE());
  
-insert into PRODUCTS (CODE, NAME, PRICE, CREATE_DATE)
-values ('P02', 'Banana', 3, CURDATE());
+insert into PRODUCTS (CODE, IMAGE_PATH, NAME, PRICE, CREATE_DATE)
+values ('P03', CONCAT(@img_path,"/","durian",".png"), 'durian', 50, CURDATE());
  
-insert into PRODUCTS (CODE, NAME, PRICE, CREATE_DATE)
-values ('P03', 'Durian', 50, CURDATE());
+insert into PRODUCTS (CODE, IMAGE_PATH, NAME, PRICE, CREATE_DATE)
+values ('P04', CONCAT(@img_path,"/","mango",".png"), 'mango', 20, CURDATE());
  
-insert into PRODUCTS (CODE, NAME, PRICE, CREATE_DATE)
-values ('P04', 'Mango', 20, CURDATE());
- 
-insert into PRODUCTS (CODE, NAME, PRICE, CREATE_DATE)
-values ('P05', 'Cherry', 30, CURDATE());
+insert into PRODUCTS (CODE, IMAGE_PATH, NAME, PRICE, CREATE_DATE)
+values ('P05', CONCAT(@img_path,"/","cherry",".png"), 'cherry', 30, CURDATE());

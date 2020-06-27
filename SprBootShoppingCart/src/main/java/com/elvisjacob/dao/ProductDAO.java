@@ -1,5 +1,7 @@
 package com.elvisjacob.dao;
 
+import java.util.Date;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.elvisjacob.entities.Product;
+import com.elvisjacob.form.ProductForm;
 import com.elvisjacob.model.ProductInfo;
 import com.elvisjacob.pagination.PaginationResult;
 
@@ -38,16 +41,13 @@ public class ProductDAO {
 		if (product == null) {
 			return null;
 		}
-		return new ProductInfo(product.getCode(), product.getName(), product.getPrice());
+		return new ProductInfo(product.getCode(), product.getName(), product.getImage(), product.getPrice());
 	}
 	
-	// TODO: Upload new product
-	// public void save(ProductForm productForm)
-	
-	
+
 	public PaginationResult<ProductInfo> queryProducts(int page, int maxResult, int maxNavigationPage, String likeName) {
 		
-		String sqlCmd = "Select new " + ProductInfo.class.getName() + " (p.code, p.name, p.price) from "
+		String sqlCmd = "Select new " + ProductInfo.class.getName() + " (p.code, p.name, p.image, p.price) from "
 				+ Product.class.getName() + " p ";
 		
 		if (likeName != null && likeName.length() > 0) {
@@ -65,6 +65,33 @@ public class ProductDAO {
 	
 	public PaginationResult<ProductInfo> queryProducts(int page, int maxResults, int maxNavigationPage) {
 		return queryProducts(page, maxResults, maxNavigationPage, null);
+	}
+
+	@Transactional
+	public void save(ProductForm productForm) {
+		
+		String code = productForm.getCode();
+		Product product = null;
+		
+		boolean isNew = false;
+		if (code != null) {
+			product = this.findProduct(code);
+		}
+		if (product == null) {
+			isNew = true;
+			product = new Product();
+			product.setCreateDate(new Date());
+		}
+		product.setCode(code);
+		product.setName(productForm.getName());
+		product.setPrice(productForm.getPrice());
+		
+		// TODO: Handle uploaded image
+		
+		if (isNew) {
+			entityManager.persist(product);
+		}
+		entityManager.flush();
 	}
 	
 }

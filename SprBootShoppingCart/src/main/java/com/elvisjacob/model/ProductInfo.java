@@ -6,6 +6,7 @@ public class ProductInfo {
 
 	private String code;
 	private String name;
+	private String imagePath;
 	private double price;
 	
 	public ProductInfo() {
@@ -14,12 +15,14 @@ public class ProductInfo {
 	public ProductInfo(Product product) {
 		this.code = product.getCode();
 		this.name = product.getName();
+		this.imagePath = product.getImage();
 		this.price = product.getPrice();
 	}
 	
-	public ProductInfo(String code, String name, double price) {
+	public ProductInfo(String code, String name, String imagePath, double price) {
 		this.code = code;
 		this.name = name;
+		this.imagePath = imagePath;
 		this.price = price;
 	}
 
@@ -45,6 +48,14 @@ public class ProductInfo {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
 	}
 	
 }

@@ -1,7 +1,6 @@
 package com.elvisjacob.entities;
 
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -29,8 +28,8 @@ public class Product implements Serializable{
 	private double price;
 	
 	@Lob
-	@Column(name="IMAGE")
-	private byte[] image;
+	@Column(name="IMAGE_PATH")
+	private String image;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="CREATE_DATE")
@@ -40,7 +39,7 @@ public class Product implements Serializable{
 		super();
 	}
 
-	public Product(String code, String name, double price, byte[] image, Date createDate) {
+	public Product(String code, String name, double price, String image, Date createDate) {
 		super();
 		this.code = code;
 		this.name = name;
@@ -73,11 +72,11 @@ public class Product implements Serializable{
 		this.price = price;
 	}
 
-	public byte[] getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 
@@ -91,7 +90,7 @@ public class Product implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Product [code=" + code + ", name=" + name + ", price=" + price + ", image=" + Arrays.toString(image)
+		return "Product [code=" + code + ", name=" + name + ", price=" + price + ", image=" + image
 				+ ", createDate=" + createDate + "]";
 	}
 	
