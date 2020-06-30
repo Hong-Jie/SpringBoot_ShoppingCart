@@ -4,6 +4,11 @@ import com.elvisjacob.entities.Product;
 
 public class ProductInfo {
 
+	@Override
+	public String toString() {
+		return "ProductInfo [code=" + code + ", name=" + name + ", imagePath=" + imagePath + ", price=" + price + "]";
+	}
+
 	private String code;
 	private String name;
 	private String imagePath;

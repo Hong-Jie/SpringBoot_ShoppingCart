@@ -1,10 +1,6 @@
 package com.elvisjacob.controller;
 
-import java.io.IOException;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -187,7 +183,6 @@ public class MainController {
 			return "redirect:/shoppingCartCustomer";
 		}
 		model.addAttribute("myCart", cartInfo);
-		
 		return "shoppingCartConfirmation";
 	}
 	
@@ -214,10 +209,9 @@ public class MainController {
 		return "redirect:/shoppingCartFinalize";
 	}
 	
-	@RequestMapping(value = {"/shopingCartFinalize"}, method=RequestMethod.GET)
+	@RequestMapping(value = {"/shoppingCartFinalize"}, method=RequestMethod.GET)
 	public String shoppinngCartFinalize(HttpServletRequest request, Model model) {
 		CartInfo lastOrderedCart = Utils.getLastOrderedCartInSession(request);
-		
 		if (lastOrderedCart == null) {
 			return "redirect:/shoppingCart";
 		}

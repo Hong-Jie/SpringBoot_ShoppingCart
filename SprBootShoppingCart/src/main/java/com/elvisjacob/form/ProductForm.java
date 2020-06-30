@@ -7,17 +7,18 @@ public class ProductForm {
 	private String code;
 	private String name;
 	private double price;
-	
+	private String imagePath;
+
 	private boolean newProduct;
 
 	public ProductForm() {
-		this.newProduct = true;
 	}
 
 	public ProductForm(Product product) {
 		this.code = product.getCode();
 		this.name = product.getName();
 		this.price = product.getPrice();
+		this.imagePath = product.getImage();
 	}
 
 	public String getCode() {
@@ -42,6 +43,14 @@ public class ProductForm {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
 	}
 
 	public boolean isNewProduct() {

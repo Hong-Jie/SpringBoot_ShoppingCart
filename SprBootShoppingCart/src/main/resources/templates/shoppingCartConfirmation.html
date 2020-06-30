@@ -17,11 +17,11 @@
 			<li>Name: <span th:utext="${myCart.customerInfo.name}"></span></li>
 			<li>Email: <span th:utext="${myCart.customerInfo.email}"></span></li>
 			<li>Phone: <span th:utext="${myCart.customerInfo.phone}"></span></li>
-			<li>Address: <span th:utext="${myCart.customerInfo.address}"></span></li>
+			<li>Address: <span th:utext="${myCart.customerInfo.addr}"></span></li>
 		</ul>
 		<h3>Cart Summary:</h3>
 		<ul>
-			<li>Quantity: <span th:utext="${myCart.quantityTotal}"></span>$</li>
+			<li>Quantity: <span th:utext="${myCart.quantityTotal}"></span></li>
 			<li>Total:
 				<span class="total"
 					th:utext="${#numbers.formatDecimal(myCart.amountTotal,3,2,'COMMA')}">
@@ -46,7 +46,7 @@
 		<ul>
 			<li>
 				<img class="product-image"
-					src="@{|/productImage?code=${cartLineInfo.productInfo.code}|}" />
+					th:src="@{${cartLineInfo.productInfo.imagePath}}" />
 			</li>
 			<li>
 				Code: <span th:utext="${cartLineInfo.productInfo.code}"></span>

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartInfo {
-	
+
 	private int orderNum;
 	private CustomerInfo customerInfo;
 	private final List<CartLineInfo> cartLines = new ArrayList<CartLineInfo>();
@@ -13,7 +13,6 @@ public class CartInfo {
 	}
 	
 	
-
 	public int getOrderNum() {
 		return orderNum;
 	}
@@ -65,7 +64,6 @@ public class CartInfo {
 	
 	public void addProduct(ProductInfo productInfo, int quantity) {
 		CartLineInfo line = this.findLineByCode(productInfo.getCode());
-		
 		if (line == null) {
 			line = new CartLineInfo(productInfo);
 			this.cartLines.add(line);

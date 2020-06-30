@@ -13,8 +13,7 @@
 	<div class="page-title">Product List</div> 
 	<div class="product-preview-container" th:each="prodInfo : ${paginationProducts.list}">
 		<ul>
-			<li><img class="product-image"
-				th:src="@{${prodInfo.imagePath}}" /></li>
+			<li><img class="product-image" th:src="@{${prodInfo.imagePath}}" /></li>
 			<li>Code: <span th:utext="${prodInfo.code}"></span></li>
 			<li>Name: <span th:utext="${prodInfo.name}"></span></li>
 			<li>Price: <span th:utext="${#numbers.formatDecimal(prodInfo.price,3,2,'COMMA')}"></span></li>

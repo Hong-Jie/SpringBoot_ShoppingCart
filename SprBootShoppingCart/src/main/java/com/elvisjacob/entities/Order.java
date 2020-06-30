@@ -21,16 +21,16 @@ public class Order implements Serializable{
 	@Column(name="AMOUNT")
 	private double amount;
 	
-	@Column(name="CURSTOMER_ADDRESS")
+	@Column(name="CUSTOMER_ADDRESS")
 	private String addr;
 	
-	@Column(name="CURSTOMER_EMAIL")
+	@Column(name="CUSTOMER_EMAIL")
 	private String email;
 	
-	@Column(name="CURSTOMER_NAME")
+	@Column(name="CUSTOMER_NAME")
 	private String name;
 	
-	@Column(name="CURSTOMER_PHONE")
+	@Column(name="CUSTOMER_PHONE")
 	private String phone;
 	
 	@Column(name="ORDER_DATE")
