@@ -21,7 +21,7 @@
 		<h3>Order Summary:</h3>
 		<ul>
 			<li>Total:
-				<span class="total" th:utext="${#numbers.formatDecimal(orderInfo.amount,3,2,'COMMA')}">         
+				<span class="total" th:utext="${#numbers.formatDecimal(orderInfo.amount,3,2,'POINT')}">
 				</span>
 			</li>
 		</ul>
@@ -39,8 +39,8 @@
 			<td th:utext="${orderDetailInfo.productCode}"></td>
 			<td th:utext="${orderDetailInfo.productName}"></td>
 			<td th:utext="${orderDetailInfo.quanity}"></td>
-			<td th:utext="${#numbers.formatDecimal(orderDetailInfo.price,3,2,'COMMA')}"></td>
-			<td th:utext="${#numbers.formatDecimal(orderDetailInfo.amount,3,2,'COMMA')}"></td>
+			<td th:utext="${#numbers.formatDecimal(orderDetailInfo.price,3,2,'POINT')}"></td>
+			<td th:utext="${#numbers.formatDecimal(orderDetailInfo.amount,3,2,'POINT')}"></td>
 		</tr>
 	</table>
 	       

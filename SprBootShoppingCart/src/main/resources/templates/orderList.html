@@ -28,7 +28,7 @@
 		<td th:utext="${orderInfo.customerName}"></td>
 		<td th:utext="${orderInfo.customerAddress}"></td>
 		<td th:utext="${orderInfo.customerEmail}"></td>
-		<td style="color:red;" th:utext="${#numbers.formatDecimal(orderInfo.amount,3,2,'COMMA')}">
+		<td style="color:red;" th:utext="${#numbers.formatDecimal(orderInfo.amount,3,2,'POINT')}">
 		</td>
 		<td><a th:href="@{|/admin/order?orderId=${orderInfo.id}|}">View</a></td>
 	</tr>
