@@ -85,9 +85,8 @@ public class ProductDAO {
 		product.setCode(code);
 		product.setName(productForm.getName());
 		product.setPrice(productForm.getPrice());
-		
-		// TODO: Handle uploaded image
-		
+		product.setImage(productForm.getImagePath());
+
 		if (isNew) {
 			entityManager.persist(product);
 		}

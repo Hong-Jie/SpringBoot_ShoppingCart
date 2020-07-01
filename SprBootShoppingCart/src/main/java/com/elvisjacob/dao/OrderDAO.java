@@ -82,9 +82,9 @@ public class OrderDAO {
 	public PaginationResult<OrderInfo> listOrderInfo(int page, int maxResult, int maxNavigationPage) {
 		
 		String sqlCmd = "Select new " + OrderInfo.class.getName()
-				+ " (ord.ID, ord.ORDER_DATE, ord.ORDER_NUM, ord.AMOUNT, ord,CUSTOMER_NAME, ord.CUSTOMER_ADDR, "
-				+ "ord.CUSTOMER_EMAIL, ord.CUSTOMER_PHONE) from " + Order.class.getName() + " ord "
-				+ "order by ord.ORDER_NUM desc";
+				+ " (ord.id, ord.orderDate, ord.orderNum, ord.amount, ord.name, ord.addr, "
+				+ "ord.email, ord.phone) from " + Order.class.getName() + " ord "
+				+ "order by ord.orderNum desc";
 		
 		Query<OrderInfo> query = (Query<OrderInfo>) entityManager.createQuery(sqlCmd, OrderInfo.class);
 		return new PaginationResult<OrderInfo>(query, page, maxResult, maxNavigationPage);
@@ -103,14 +103,13 @@ public class OrderDAO {
 	}
 	
 	public List<OrderDetailInfo> listOrderDetailInfos(String id){
-		
 		String sqlCmd = "Select new " + OrderDetailInfo.class.getName()
-				+ " (d.id, d.product.code, d.product.name , d.quanity,d.price,d.amount) "
+				+ " (d.id, d.product.code, d.product.name, d.quantity, d.price, d.amount) "
                 + "from " + OrderDetail.class.getName() + " d "
                 + "where d.order.id = :orderId ";
 		
-		Query<OrderDetailInfo> query = (Query<OrderDetailInfo>) entityManager.createNamedQuery(sqlCmd, OrderDetailInfo.class);
-		query.setParameter("orderID", id);
+		Query<OrderDetailInfo> query = (Query<OrderDetailInfo>) entityManager.createQuery(sqlCmd, OrderDetailInfo.class);
+		query.setParameter("orderId", id);
 		
 		return query.getResultList();
 	}

@@ -59,11 +59,11 @@ alter table ORDER_DETAILS
 
 insert into ACCOUNTS (USER_NAME, ACTIVE, PASSWORD, USER_ROLE)
 values ('employee1', 1,
-'pwd_emp', 'ROLE_EMPLOYEE');
+'$2a$10$T/WRB3tUdz9tYLsmiVZmAe8KpLk8K.mppLzj3PtWssgeTxhgNdoku', 'ROLE_EMPLOYEE');
  
 insert into ACCOUNTS (USER_NAME, ACTIVE, PASSWORD, USER_ROLE)
 values ('manager1', 1,
-'pwd_mng', 'ROLE_MANAGER');
+'$2a$10$UaPHRGoiLqUxVobE8mPVw.fyDCkNy8/ZKgcAbG2wYvy4uTlajGo5m', 'ROLE_MANAGER');
 
 set @img_path = "/images";
 

@@ -13,8 +13,8 @@ public class Account implements Serializable{
 
 	private static final long serialVersionUID = -4926764137234642038L;
 	
-	public static final String ROLE_MANAGER = "manager";
-	public static final String ROLE_EMPLOYEE = "employee";
+	public static final String ROLE_MANAGER = "ROLE_MANAGER";
+	public static final String ROLE_EMPLOYEE = "ROLE_EMPLOYEE";
 	
 	@Id
 	@Column(name="USER_NAME")

@@ -49,14 +49,11 @@
 		<tr>
 			<td>Image</td>
 			<td>
-				<img th:src="@{${productForm.imagePath}}" width="100"/>
+				<input th:field="*{imagePath}" />
 			</td>
-			<td> </td>
-		</tr>
-		<tr>
-			<td>Upload Image</td>
-			<td><input type="file" th:field="*{fileData}" /></td>
-			<td> </td>
+			<td>
+				<span class="error-message" th:if="${#fields.hasErrors('imagePath')}" th:errors="*{imagePath}">..</span> 
+			</td>
 		</tr>
 		<tr>
 			<td>&nbsp;</td>

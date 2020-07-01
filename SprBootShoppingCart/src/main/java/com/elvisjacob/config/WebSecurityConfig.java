@@ -49,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.usernameParameter("username")
 				.passwordParameter("password")
 				
-				.and().logout().logoutUrl("admin/logout").logoutSuccessUrl("/");
+				.and().logout().logoutUrl("/admin/logout").logoutSuccessUrl("/");
 	}
 	
 }

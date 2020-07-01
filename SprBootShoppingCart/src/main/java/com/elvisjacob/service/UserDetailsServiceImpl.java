@@ -42,7 +42,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 				/*account not expired*/ 	true,
 				/*credentials not expired*/ true,
 				/*account not locked*/		true, grantList);
-		
+
 		return userDetails;
 	}
 

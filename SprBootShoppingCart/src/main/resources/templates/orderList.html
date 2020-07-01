@@ -24,7 +24,7 @@
 	</tr>
 	<tr th:each="orderInfo : ${paginationResult.list}">
 		<td th:utext="${orderInfo.orderNum}"></td>
-		<td th:utext="${#dates.format(orderInfo.orderDate,'dd-MM-yyyy HH:mm')}"></td>
+		<td th:utext="${#dates.format(orderInfo.orderDate,'MM-dd-yyyy HH:mm')}"></td>
 		<td th:utext="${orderInfo.customerName}"></td>
 		<td th:utext="${orderInfo.customerAddress}"></td>
 		<td th:utext="${orderInfo.customerEmail}"></td>
