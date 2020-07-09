@@ -1,83 +1,83 @@
-create table ACCOUNTS
+create table accounts
 (
-  USER_NAME VARCHAR(20) not null,
-  ACTIVE    BIT not null,
-  PASSWORD  VARCHAR(128) not null,
-  USER_ROLE VARCHAR(20) not null
+  user_name VARCHAR(20) not null,
+  active    BIT not null,
+  password  VARCHAR(128) not null,
+  user_role VARCHAR(20) not null
 ) ;
  
-alter table ACCOUNTS
-  add primary key (USER_NAME) ;
+alter table accounts
+  add primary key (user_name) ;
  
-create table PRODUCTS
+create table products
 (
-  CODE        VARCHAR(20) not null,
-  IMAGE_PATH  VARCHAR(1024) not null,
-  NAME        VARCHAR(255) not null,
-  PRICE       double precision not null,
-  CREATE_DATE datetime not null
+  code        VARCHAR(20) not null,
+  image_path  VARCHAR(1024) not null,
+  name        VARCHAR(255) not null,
+  price       double precision not null,
+  create_date datetime not null
 ) ;
  
-alter table PRODUCTS
-  add primary key (CODE) ;
+alter table products
+  add primary key (code) ;
 
-create table ORDERS
+create table orders
 (
-  ID               VARCHAR(50) not null,
-  AMOUNT           double precision not null,
-  CUSTOMER_ADDRESS VARCHAR(255) not null,
-  CUSTOMER_EMAIL   VARCHAR(128) not null,
-  CUSTOMER_NAME    VARCHAR(255) not null,
-  CUSTOMER_PHONE   VARCHAR(128) not null,
-  ORDER_DATE       datetime not null,
-  ORDER_NUM        INTEGER not null
+  id               VARCHAR(50) not null,
+  amount           double precision not null,
+  customer_address VARCHAR(255) not null,
+  customer_email   VARCHAR(128) not null,
+  customer_name    VARCHAR(255) not null,
+  customer_phone   VARCHAR(128) not null,
+  order_date       datetime not null,
+  order_num        INTEGER not null
 ) ;
-alter table ORDERS
-  add primary key (ID) ;
-alter table ORDERS
-  add constraint ORDER_UK unique (ORDER_NUM) ;
+alter table orders
+  add primary key (id) ;
+alter table orders
+  add constraint ORDER_UK unique (order_num) ;
 
-create table ORDER_DETAILS
+create table order_details
 (
-  ID         VARCHAR(50) not null,
-  AMOUNT     double precision not null,
-  PRICE      double precision not null,
-  QUANTITY   INTEGER not null,
-  ORDER_ID   VARCHAR(50) not null,
-  PRODUCT_ID VARCHAR(20) not null
+  id         VARCHAR(50) not null,
+  amount     double precision not null,
+  price      double precision not null,
+  quantity   INTEGER not null,
+  order_id   VARCHAR(50) not null,
+  product_id VARCHAR(20) not null
 ) ;
   
-alter table ORDER_DETAILS
-  add primary key (ID) ;
-alter table ORDER_DETAILS
-  add constraint ORDER_DETAIL_ORD_FK foreign key (ORDER_ID)
-  references ORDERS (ID);
-alter table ORDER_DETAILS
-  add constraint ORDER_DETAIL_PROD_FK foreign key (PRODUCT_ID)
-  references PRODUCTS (CODE);
+alter table order_details
+  add primary key (id) ;
+alter table order_details
+  add constraint ORDER_DETAIL_ORD_FK foreign key (order_id)
+  references orders (id);
+alter table order_details
+  add constraint ORDER_DETAIL_PROD_FK foreign key (product_id)
+  references products (code);
  
 
-insert into ACCOUNTS (USER_NAME, ACTIVE, PASSWORD, USER_ROLE)
+insert into accounts (user_name, active, password, user_role)
 values ('employee1', 1,
 '$2a$10$T/WRB3tUdz9tYLsmiVZmAe8KpLk8K.mppLzj3PtWssgeTxhgNdoku', 'ROLE_EMPLOYEE');
  
-insert into ACCOUNTS (USER_NAME, ACTIVE, PASSWORD, USER_ROLE)
+insert into accounts (user_name, active, password, user_role)
 values ('manager1', 1,
 '$2a$10$UaPHRGoiLqUxVobE8mPVw.fyDCkNy8/ZKgcAbG2wYvy4uTlajGo5m', 'ROLE_MANAGER');
 
 set @img_path = "/images";
 
-insert into PRODUCTS (CODE, IMAGE_PATH, NAME, PRICE, CREATE_DATE)
+insert into products (code, image_path, name, price, create_date)
 values ('P01', CONCAT(@img_path,"/","apple",".png"), 'apple', 5, CURDATE());
  
-insert into PRODUCTS (CODE, IMAGE_PATH, NAME, PRICE, CREATE_DATE)
+insert into products (code, image_path, name, price, create_date)
 values ('P02', CONCAT(@img_path,"/","banana",".png"), 'banana', 3, CURDATE());
  
-insert into PRODUCTS (CODE, IMAGE_PATH, NAME, PRICE, CREATE_DATE)
+insert into products (code, image_path, name, price, create_date)
 values ('P03', CONCAT(@img_path,"/","durian",".png"), 'durian', 50, CURDATE());
  
-insert into PRODUCTS (CODE, IMAGE_PATH, NAME, PRICE, CREATE_DATE)
+insert into products (code, image_path, name, price, create_date)
 values ('P04', CONCAT(@img_path,"/","mango",".png"), 'mango', 20, CURDATE());
  
-insert into PRODUCTS (CODE, IMAGE_PATH, NAME, PRICE, CREATE_DATE)
+insert into products (code, image_path, name, price, create_date)
 values ('P05', CONCAT(@img_path,"/","cherry",".png"), 'cherry', 30, CURDATE());

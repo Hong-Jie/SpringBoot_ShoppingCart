@@ -1,0 +1,11 @@
+runtime: java
+env: 
+
+handlers:
+- url: /.*
+  script: this field is required, but ignored
+
+# Automatic Scaling
+automatic_scaling: 
+  min_num_instances: 1 
+  max_num_instances: 2
