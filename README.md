@@ -1,16 +1,16 @@
 # SpringBoot_ShoppingCart
 
-# Environement #
+## Environement ##
 
-## Local ##
+### Local ###
 
 In this project, I've created a simple shopping cart system using **Spring Boot** framework, **MySQL** database, and **Hibernate ORM** to connect the application and the database. Apache Tomcat server is used in my local computer.
 
-## Cloud ##
+### Cloud ###
 
 I've deployed this application to [Google Cloud Platform (GCP)](https://console.cloud.google.com) App Engine, which is a Platform as a Service (PaaS). The required [app.yaml](https://github.com/Hong-Jie/SpringBoot_ShoppingCart/blob/deploy-gcp/SprBootShoppingCart/src/main/appengine/app.yaml) file and the required modifications can be found on branch [deploy-gcp](https://github.com/Hong-Jie/SpringBoot_ShoppingCart/tree/deploy-gcp/SprBootShoppingCart). [Click here](https://shoppingcart-dot-shoppingcart-springboot.uc.r.appspot.com/) for the deployed shopping cart.
 
-# Usage #
+## Usage ##
 
 This shopping cart system allows three credentials: customer, employee, and manager.
 1. **Customers** are not required to login. They can buy multiple products, set whatever amount they want to buy, and input their information when they finish buying products. The system will then show the cart and the total cost to the customer and ask them to confirm. Once the customer confirms, the order will be saved to the database.
@@ -19,7 +19,7 @@ This shopping cart system allows three credentials: customer, employee, and mana
 
 For convenience purpose, I put the username/password of the employee and the manager below the login page.
 
-# Implementation #
+## Implementation ##
 
 - **Entities**: Account, Order, Order detail, Product.  
 Order saves the user information and multiple order details. Order detail saves the order it belongs, a product and the amount of the products, and the total.
