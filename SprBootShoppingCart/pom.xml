@@ -98,15 +98,15 @@
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-gcp-starter -->
 		<dependency>
-    			<groupId>org.springframework.cloud</groupId>
-    			<artifactId>spring-cloud-gcp-starter</artifactId>
-    			<version>1.2.3.RELEASE</version>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-gcp-starter</artifactId>
+			<version>1.2.3.RELEASE</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-gcp-starter-sql-mysql -->
 		<dependency>
-    			<groupId>org.springframework.cloud</groupId>
-    			<artifactId>spring-cloud-gcp-starter-sql-mysql</artifactId>
-    			<version>1.2.3.RELEASE</version>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-gcp-starter-sql-mysql</artifactId>
+			<version>1.2.3.RELEASE</version>
 		</dependency>
 	</dependencies>
 
@@ -117,14 +117,14 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-        			<groupId>com.google.cloud.tools</groupId>
-        			<artifactId>appengine-maven-plugin</artifactId>
-        			<version>2.2.0</version>
-        			<configuration>
-          				<version>1</version>
-          				<projectId>GCLOUD_CONFIG</projectId>
-        			</configuration>
-      			</plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>appengine-maven-plugin</artifactId>
+				<version>2.2.0</version>
+				<configuration>
+					<version>1</version>
+					<projectId>GCLOUD_CONFIG</projectId>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
