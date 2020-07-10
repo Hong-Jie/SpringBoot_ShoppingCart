@@ -8,7 +8,9 @@ In this project, I've created a simple shopping cart system using **Spring Boot*
 
 ### Cloud ###
 
-I've deployed this application to [Google Cloud Platform (GCP)](https://console.cloud.google.com) App Engine, which is a Platform as a Service (PaaS). The required [app.yaml](https://github.com/Hong-Jie/SpringBoot_ShoppingCart/blob/deploy-gcp/SprBootShoppingCart/src/main/appengine/app.yaml) file and the required modifications can be found on branch [deploy-gcp](https://github.com/Hong-Jie/SpringBoot_ShoppingCart/tree/deploy-gcp/SprBootShoppingCart). [Click here](https://shoppingcart-dot-shoppingcart-springboot.uc.r.appspot.com/) for the deployed shopping cart.
+I've deployed this application to [Google Cloud Platform (GCP)](https://console.cloud.google.com) App Engine, which is a Platform as a Service (PaaS). The required [app.yaml](https://github.com/Hong-Jie/SpringBoot_ShoppingCart/blob/deploy-gcp/SprBootShoppingCart/src/main/appengine/app.yaml) file and the required modifications can be found on branch [deploy-gcp](https://github.com/Hong-Jie/SpringBoot_ShoppingCart/tree/deploy-gcp/SprBootShoppingCart). 
+
+[Click here](https://shoppingcart-dot-shoppingcart-springboot.uc.r.appspot.com/) for the deployed shopping cart.
 
 ## Usage ##
 
