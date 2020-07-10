@@ -1,10 +1,19 @@
 # SpringBoot_ShoppingCart
 
+## Introduction ##
+
+In this project, I've created a simple shopping cart system and:
+- Implemented REST API with CRUD operations on MySQL
+- Designed authentication and authorization mechanism using Spring security
+- Validated user input data and stored to the database
+- Displayed products page by page using pagination
+- Deployed to Google Cloud Platform(GCP): https://shoppingcart-dot-shoppingcart-springboot.uc.r.appspot.com/
+
 ## Environement ##
 
 ### Local ###
 
-In this project, I've created a simple shopping cart system using **Spring Boot** framework, **MySQL** database, and **Hibernate ORM** to connect the application and the database. Apache Tomcat server is used in my local computer.
+I used **Spring Boot** framework, **MySQL** database, and **Hibernate ORM** to connect the application and the database. **Apache Tomcat** server is used by default in Spring framework.
 
 ### Cloud ###
 
