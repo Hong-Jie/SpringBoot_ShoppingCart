@@ -17,7 +17,16 @@ This shopping cart system allows three credentials: customer, employee, and mana
 2. **Employees** have to login. They can buy products just as customers and they can view orders in the database.
 3. **Managers** have to login. They can buy products, view orders, and create products.
 
-For convenience purpose, I put the username/password of the employee and the manager below the login page.
+The below GIF files show different access for different users. For convenience purpose, I put the username/password of the employee and the manager below the login page.
+
+**Customer**  
+<img src="demo/customer.gif" align="top"> 
+
+**Employee**  
+<img src="demo/employee.gif" align="top">  
+
+**Manager**  
+<img src="demo/manager.gif" align="top">  
 
 ## Implementation ##
 
@@ -32,3 +41,6 @@ Controllers handle HTTP requests and responses. The MainController controlls the
 - **Security**: Spring securiy is used in maven dependencies to authenticate and authorize user's operations.
 - **Form Validation**: Common Validator is used in maven dependencies to validate the input of user information.
 
+## References ##
+
+This project is inspired by [o7planning](https://o7planning.org/en/11669/spring-boot)
